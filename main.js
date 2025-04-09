@@ -17,7 +17,7 @@ function init() {
   document.body.appendChild(renderer.domElement);
 
   const geometry = new THREE.PlaneGeometry(2, 2, 100, 100);
-  const vertexShader = \`
+  const vertexShader = `
     uniform float u_time;
     varying vec2 vUv;
     void main() {
@@ -26,13 +26,13 @@ function init() {
       pos.z = sin(pos.x * 10.0 + u_time) * 0.1;
       gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
     }
-  \`;
-  const fragmentShader = \`
+  `;
+  const fragmentShader = `
     varying vec2 vUv;
     void main() {
       gl_FragColor = vec4(vUv, 0.5 + 0.5 * sin(vUv.x * 20.0), 1.0);
     }
-  \`;
+  `;
 
   material = new THREE.ShaderMaterial({
     uniforms: uniforms,
